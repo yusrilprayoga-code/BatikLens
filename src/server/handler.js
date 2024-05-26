@@ -33,6 +33,13 @@ const jwt = require('jsonwebtoken');
 //     return response;
 // }
 
+const homeHandler = (request, h) => {
+  return h.response({
+    status: 'success',
+    message: 'Home route'
+  }).code(200);
+}
+
 const registerHandler = async (request, h) => {
   const { email, password, confirmPassword } = request.payload;
 
@@ -97,4 +104,4 @@ const loginHandler = async (request, h) => {
   }).code(200);
 };
 
-module.exports = {  registerHandler, loginHandler };
+module.exports = {  registerHandler, loginHandler, homeHandler };

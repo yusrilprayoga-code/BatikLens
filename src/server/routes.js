@@ -2,9 +2,15 @@ const {
   registerHandler,
   loginHandler,
   // postPredictHandler,
+  homeHandler,
 } = require("./handler");
 
 const routes = [
+  {
+    method: "GET",
+    path: "/",
+    handler: homeHandler,
+  },
   {
     method: "POST",
     path: "/register",
