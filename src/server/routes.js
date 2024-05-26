@@ -1,18 +1,52 @@
-const postPredictHandler = require("../server/handler");
+const {
+  registerHandler,
+  loginHandler,
+  // postPredictHandler,
+} = require('./handler');
 
 const routes = [
   {
-    path: "/predict",
-    method: "POST",
-    handler: postPredictHandler,
+    method: 'POST',
+    path: '/register',
+    handler: registerHandler,
     options: {
+      auth: false,
       payload: {
-        allow: 'multipart/form-data',
-        multipart: true,
-        maxBytes: 1000000,
+        allow: 'application/json',
       },
     },
   },
+  {
+    method: 'POST',
+    path: '/login',
+    handler: loginHandler,
+    options: {
+      auth: false,
+    },
+  },
+  {
+    method: 'GET',
+    path: '/protected',
+    handler: (request, h) => {
+      return h.response({
+        status: 'success',
+        message: 'You have accessed a protected route!',
+        user: request.auth.credentials.user,
+      }).code(200);
+    },
+  },
+  // {
+  //   path: "/predict",
+  //   method: "POST",
+  //   handler: postPredictHandler,
+  //   options: {
+  //     payload: {
+  //       allow: 'multipart/form-data',
+  //       multipart: true,
+  //       maxBytes: 1000000,
+  //     },
+  //   },
+  // },
 ];
 
 module.exports = routes;
