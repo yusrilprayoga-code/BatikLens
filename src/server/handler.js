@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const { Firestore } = require('@google-cloud/firestore');
 const db = new Firestore();
 const jwt = require('jsonwebtoken');
+const Joi = require('joi');
 
 // const storeData = require('../services/storeData');
  
@@ -43,10 +44,18 @@ const homeHandler = (request, h) => {
 const registerHandler = async (request, h) => {
   const { email, password, confirmPassword } = request.payload;
 
-  if (password !== confirmPassword) {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required(),
+    confirmPassword: Joi.ref('password')
+  });
+
+  const {error} = schema.validate({email, password, confirmPassword});
+
+  if (error) {
     return h.response({
       status: 'fail',
-      message: 'Password does not match'
+      message: error.details[0].message
     }).code(400);
   }
 
