@@ -38,3 +38,18 @@ json
 Headers:
 * Authorization: Bearer <JWT_TOKEN>
 * Protected: Ya
+
+## Logout ("/logout")
+
+* Path: /logout
+* Method: GET
+* Handler: logoutHandler
+* Options:
+* auth: 'jwt' - Memerlukan autentikasi menggunakan JWT.
+* Deskripsi: Menghandle proses logout pengguna.
+Not Found
+
+## Path: /{any*}
+* Method: GET
+* Handler: Fungsi anonim yang mengembalikan pesan bahwa halaman tidak ditemukan.
+* Deskripsi: Menghandle semua rute yang tidak dikenali, mengembalikan pesan kesalahan 404.
