@@ -28,7 +28,10 @@ const routes = [
     handler: loginHandler,
     options: {
       auth: false,
-    },
+      payload: {
+        allow: "application/json",
+      }
+    }
   },
   {
     method: "GET",
