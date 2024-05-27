@@ -38,10 +38,3 @@ json
 Headers:
 * Authorization: Bearer <JWT_TOKEN>
 * Protected: Ya
-
-## Set Cookie ("/set-cookie")
-* Method: GET
-* Description: Endpoint untuk mengatur cookie autentikasi. Mengatur cookie bernama "auth" dengan nilai tertentu dan waktu kadaluwarsa 24 jam.
-* Headers:
-Authorization: Bearer <JWT_TOKEN>
-* Protected: Ya
