@@ -157,4 +157,14 @@ const loginHandler = async (request, h) => {
     .code(200);
 };
 
-module.exports = { registerHandler, loginHandler, homeHandler };
+const logoutHandler = (_request, h) => {
+  return h
+    .response({
+      status: "success",
+      message: "Logout successfully",
+    })
+    .unstate("token")
+    .code(200);
+};
+
+module.exports = { registerHandler, loginHandler, homeHandler, logoutHandler };

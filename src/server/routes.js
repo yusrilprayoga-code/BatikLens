@@ -3,6 +3,7 @@ const {
   loginHandler,
   // postPredictHandler,
   homeHandler,
+  logoutHandler,
 } = require("./handler");
 
 const routes = [
@@ -49,7 +50,27 @@ const routes = [
       auth: 'jwt',
     }
   },
-  
+  {
+    method: "GET",
+    path: "/logout",
+    handler: logoutHandler,
+    options: {
+      auth: 'jwt',
+    }
+  },
+  {
+    method: "GET",
+    path: "/{any*}",
+    handler: (_request, h) => {
+      return h
+        .response({
+          status: "fail",
+          message: "Page not found",
+        })
+        .code(404);
+    },
+  }
+
   // {
   //   path: "/predict",
   //   method: "POST",
