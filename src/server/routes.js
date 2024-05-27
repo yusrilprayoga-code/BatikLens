@@ -51,7 +51,7 @@ const routes = [
     path: "/set-cookie",
     handler: async (request, h) => {
       h.state("auth", "your_cookie_value", {
-        ttl: 24 * 60 * 60 * 1000,
+        ttl: 60 * 60 * 1000,
         isSecure: false,
         path: "/",
       });
