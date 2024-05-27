@@ -104,13 +104,25 @@ const loginHandler = async (request, h) => {
     }).code(400);
   }
 
-  const token = jwt.sign({ user: { id: user.id, email: user.email } }, process.env.JWT_SECRET, { expiresIn: '4h' });
+  const token = jwt.sign({ user: { id: user.id, email: user.email } }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  console.log(decoded);
 
   return h.response({
     status: 'success',
     message: 'Login successful',
     email,
+    expiresIn: '1h',
     token,
+  }).state ('token', token, {
+    ttl: 30 * 60 * 1000, 
+    isSecure: process.env.NODE_ENV === 'production',
+    isHttpOnly: true,
+    encoding: 'none',
+    clearInvalid: false,
+    path: '/',
+    strictHeader: true
   }).code(200);
 };
 

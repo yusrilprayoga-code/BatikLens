@@ -49,27 +49,7 @@ const routes = [
       auth: 'jwt',
     }
   },
-  {
-    method: "GET",
-    path: "/set-cookie",
-    handler: async (request, h) => {
-      h.state("auth", "your_cookie_value", {
-        ttl: 60 * 60 * 1000,
-        isSecure: false,
-        path: "/",
-      });
-
-      return h
-        .response({
-          status: "success",
-          message: "Cookie set successfully",
-        })
-        .code(200);
-    },
-    options: {
-      auth: 'jwt',
-    },
-  },
+  
   // {
   //   path: "/predict",
   //   method: "POST",
