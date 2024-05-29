@@ -69,7 +69,7 @@ const routes = [
         })
         .code(404);
     },
-  }
+  },
 
   // {
   //   path: "/predict",
