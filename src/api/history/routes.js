@@ -1,7 +1,9 @@
+const postHandlerHistories = require("./handler");
+
 const routes = [
     {
-        method: "POST",
-        path: "/histories",
+        method: "GET",
+        path: "/predict/histories",
         handler: postHandlerHistories,
     }
 ]

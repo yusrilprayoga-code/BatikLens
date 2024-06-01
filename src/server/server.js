@@ -12,6 +12,9 @@ const authentication = require("../api/authentication");
 // predict
 const predict = require("../api/predict");
 
+// get Histories
+const histories = require("../api/history");
+
 // Load environment variables
 require("dotenv").config();
 
@@ -78,6 +81,7 @@ require("dotenv").config();
 
   await server.register(authentication);
   await server.register(predict);
+  await server.register(histories);
 
   server.auth.default("jwt");
 
