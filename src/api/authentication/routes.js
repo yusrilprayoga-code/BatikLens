@@ -1,10 +1,9 @@
-const { 
-    getRegisterData,
-    registerHandler,
-    loginHandler,
-    getLoginData,
-    logoutHandler,
-
+const {
+  getRegisterData,
+  registerHandler,
+  loginHandler,
+  getLoginData,
+  logoutHandler,
 } = require("./handler");
 
 const routes = [
@@ -31,7 +30,7 @@ const routes = [
     path: "/login",
     handler: loginHandler,
     options: {
-      auth: false,
+    auth: false,
       payload: {
         allow: "application/json",
       },
@@ -49,7 +48,23 @@ const routes = [
     options: {
       auth: "jwt",
     },
-  }
+  },
+  {
+    method: "GET",
+    path: "/protected",
+    handler: (request, h) => {
+      return h
+        .response({
+          status: "success",
+          message: "You have accessed a protected route!",
+          user: request.auth.credentials.user,
+        })
+        .code(200);
+    },
+    options: {
+      auth: "jwt",
+    },
+  },
 ];
 
 module.exports = routes;

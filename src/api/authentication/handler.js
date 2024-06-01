@@ -4,7 +4,6 @@ const crypto = require("crypto");
 const jwt = require('jsonwebtoken');
 const { Firestore } = require('@google-cloud/firestore');
 const db = new Firestore();
-const AuthenticationError = require("../../exceptions/AuthenticationError");
 
 const registerHandler = async (request, h) => {
   const { email, password, confirmPassword } = request.payload;
@@ -17,9 +16,12 @@ const registerHandler = async (request, h) => {
 
   const { error } = schema.validate({ email, password, confirmPassword });
 
-    if (error) {
-        throw new AuthenticationError(error.message);
-    }
+  if (error) {
+    return h.response({
+      status: "fail",
+      message: error.details[0].message,
+    }).code(400);
+  }
 
   const userSnapshot = await db.collection("users").where("email", "==", email).get();
   if (!userSnapshot.empty) {

@@ -2,7 +2,7 @@ const { Firestore } = require('@google-cloud/firestore');
 
 const storeData = async (id, data) => {
   const db = new Firestore();
-  const predictCollection = db.collection('users');
+  const predictCollection = db.collection('predictions');
 
   try {
     await predictCollection.doc(id).set(data);
@@ -16,7 +16,7 @@ const storeData = async (id, data) => {
       message: error.message
     };
   }
-  
+
 };
 
 module.exports = storeData;

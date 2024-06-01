@@ -1,21 +1,23 @@
 const Hapi = require("@hapi/hapi");
 const Jwt = require("@hapi/jwt");
+const Cookie = require("@hapi/cookie");
+const loadModel = require("../services/loadModel");
 
 // error handling
 const InputError = require("../exceptions/InputError");
 
-// cookie
-const Cookie = require("@hapi/cookie");
-
 // authentikasi
 const authentication = require("../api/authentication");
 
+// predict
+const predict = require("../api/predict");
 
+// Load environment variables
 require("dotenv").config();
 
 (async () => {
   const server = Hapi.server({
-    port: process.env.PORT,
+    port: process.env.PORT || 3000,
     host: "localhost",
     routes: {
       cors: {
@@ -24,8 +26,8 @@ require("dotenv").config();
     },
   });
 
-  // const model = await loadModel();
-  // server.app.model = model;
+  const model = await loadModel();
+  server.app.model = model;
 
   server.ext("onPreResponse", function (request, h) {
     const response = request.response;
@@ -75,9 +77,9 @@ require("dotenv").config();
   });
 
   await server.register(authentication);
+  await server.register(predict);
 
   server.auth.default("jwt");
-
 
   await server.start();
   console.log(`Server started at: ${server.info.uri}`);

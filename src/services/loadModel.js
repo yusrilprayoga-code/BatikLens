@@ -1,7 +1,9 @@
-// const tf = require('@tensorflow/tfjs-node');
+const tf = require('@tensorflow/tfjs-node');
  
-// async function loadModel() {
-//     return tf.loadGraphModel(process.env.MODEL_URL);
-// }
+async function loadModel() {
+    return tf.loadGraphModel(
+        `file://${process.cwd()}/src/dummy/model.json`
+    );
+}
  
-// module.exports = loadModel;
+module.exports = loadModel;
