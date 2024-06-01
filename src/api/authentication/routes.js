@@ -1,8 +1,7 @@
 const {
-  getRegisterData,
   registerHandler,
   loginHandler,
-  getLoginData,
+  getUserDataById,
   logoutHandler,
 } = require("./handler");
 
@@ -20,17 +19,11 @@ const routes = [
   },
 
   {
-    method: "GET",
-    path: "/register:{id}",
-    handler: getRegisterData,
-  },
-
-  {
     method: "POST",
     path: "/login",
     handler: loginHandler,
     options: {
-    auth: false,
+      auth: false,
       payload: {
         allow: "application/json",
       },
@@ -38,8 +31,11 @@ const routes = [
   },
   {
     method: "GET",
-    path: "/login:{id}",
-    handler: getLoginData,
+    path: "/user/{id}",
+    handler: getUserDataById,
+    options: {
+      auth: "jwt",
+    },
   },
   {
     method: "GET",

@@ -52,22 +52,6 @@ const registerHandler = async (request, h) => {
   }).code(201);
 };
 
-const getRegisterData = async (request, h) => {
-  const id = request.params.id;
-  const userSnapshot = await db.collection("users").doc(id).get();
-  if (!userSnapshot.exists) {
-    return h.response({
-      status: "fail",
-      message: "User not found",
-    }).code(404);
-  }
-  const user = userSnapshot.data();
-  return h.response({
-    status: "success",
-    user,
-  }).code(200);
-};
-
 const loginHandler = async (request, h) => {
   const { email, password } = request.payload;
 
@@ -113,21 +97,21 @@ const loginHandler = async (request, h) => {
   }).code(200);
 };
 
-const getLoginData = async (request, h) => {
-  const id = request.params.id;
-  const userSnapshot = await db.collection("users").doc(id).get();
-  if (!userSnapshot.exists) {
+const getUserDataById = async (request, h) => {
+    const id = request.params.id;
+    const userSnapshot = await db.collection("users").doc(id).get();
+    if (!userSnapshot.exists) {
+      return h.response({
+        status: "fail",
+        message: "User not found",
+      }).code(404);
+    }
+    const user = userSnapshot.data();
     return h.response({
-      status: "fail",
-      message: "User not found",
-    }).code(404);
-  }
-  const user = userSnapshot.data();
-  return h.response({
-    status: "success",
-    user,
-  }).code(200);
-};
+      status: "success",
+      user,
+    }).code(200);
+  };
 
 const logoutHandler = (_request, h) => {
   return h.response({
@@ -136,4 +120,4 @@ const logoutHandler = (_request, h) => {
   }).unstate("token").code(200);
 };
 
-module.exports = { registerHandler, getRegisterData, loginHandler, getLoginData, logoutHandler };
+module.exports = { registerHandler, loginHandler, getUserDataById, logoutHandler };
