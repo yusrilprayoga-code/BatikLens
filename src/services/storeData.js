@@ -16,6 +16,7 @@ const storeData = async (id, data) => {
       message: error.message
     };
   }
+  
 };
 
 module.exports = storeData;

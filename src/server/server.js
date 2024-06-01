@@ -1,8 +1,16 @@
 const Hapi = require("@hapi/hapi");
-const routes = require("../server/routes");
-const InputError = require("../exceptions/InputError");
 const Jwt = require("@hapi/jwt");
+
+// error handling
+const InputError = require("../exceptions/InputError");
+
+// cookie
 const Cookie = require("@hapi/cookie");
+
+// authentikasi
+const authentication = require("../api/authentication");
+
+
 require("dotenv").config();
 
 (async () => {
@@ -55,7 +63,7 @@ require("dotenv").config();
       exp: true,
       maxAgeSec: 14400,
     },
-    validate: (artifacts, request, h) => {
+    validate: (artifacts, _request, _h) => {
       if (!artifacts.decoded.payload.user) {
         return { isValid: false };
       }
@@ -66,9 +74,10 @@ require("dotenv").config();
     },
   });
 
+  await server.register(authentication);
+
   server.auth.default("jwt");
 
-  server.route(routes);
 
   await server.start();
   console.log(`Server started at: ${server.info.uri}`);
