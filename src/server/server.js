@@ -15,6 +15,9 @@ const predict = require("../api/predict");
 // get Histories
 const histories = require("../api/history");
 
+// search predictions
+const searchPredictions = require("../api/command");
+
 // Load environment variables
 require("dotenv").config();
 
@@ -82,6 +85,7 @@ require("dotenv").config();
   await server.register(authentication);
   await server.register(predict);
   await server.register(histories);
+  await server.register(searchPredictions);
 
   server.auth.default("jwt");
 
