@@ -1,5 +1,6 @@
 # Method Path Api pada Batik Lens
 
+# For testing api : https://batik-ctthvh4ssa-et.a.run.app
 
 ## Home ("/")
 * Method: GET
