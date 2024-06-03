@@ -5,7 +5,7 @@ async function predictClassification(model, image) {
     try {
         const tensor = tf.node
             .decodeJpeg(image)
-            .resizeNearestNeighbor([224, 224])
+            .resizeNearestNeighbor([256, 256])
             .expandDims()
             .toFloat();
 
@@ -13,17 +13,17 @@ async function predictClassification(model, image) {
         const score = await prediction.data();
         const confidenceScore = Math.max(...score) * 100;
 
-        const isCancer = confidenceScore > 50;
-        const classes = ['Non-cancer', 'Cancer'];
+        const isBatik = confidenceScore > 50;
+        const classes = ['bukan batik', 'batik'];
 
-        const label = classes[isCancer ? 1 : 0];
+        const label = classes[isBatik ? 1 : 0];
 
         let suggestion;
 
-        if (isCancer) {
-            suggestion = 'Segera berkonsultasi dengan dokter spesialis kulit terdekat.';
+        if (isBatik) {
+            suggestion = 'Batik ditemukan pada gambar yang Anda unggah';
         } else {
-            suggestion = 'Tetap jaga kesehatan kulit Anda.';
+            suggestion = 'Batik tidak ditemukan pada gambar yang Anda unggah';
         }
 
         return {
@@ -33,7 +33,7 @@ async function predictClassification(model, image) {
         };
 
     } catch (error) {
-        throw new InputError(`Terjadi kesalahan dalam melakukan prediksi`);
+        throw new InputError(`Terjadi kesalahan dalam melakukan prediksi: ${error.message}`);
     }
 }
 
