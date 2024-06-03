@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "euphoric-hull-424602-s8",
+  "private_key_id": "12020301e3cb8c5f542130cef235f5a1fcc9fea7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDZ8FfySLXBn4zF\ndYFAcn6o5nvBjjzpXe/8rhpbpMzbJW4wHmGOPNlCfyZblPxkgbwQlUDbRSKtm/i7\n+S1uw7j8dOS5kJFTSU6pjcyGwYV3K9+smdXSJSat7fhwDH9hZnNCJ/btBfGmyMre\nlaiDN2KjObS/X1r/lMyQk2ldeTq18gymT7YYb9lfalPdpZwojqu4wC/uuOhDQhhf\nVVc4eVEEm2ofPizMEwrWb0/ZxnyN+qyi1DhaTdnrgcVhb4kL1nFfwL7rZiXxwJGt\nHadKLpTsjuZhRiiAItOHh2yTLNmmEBcH9qvt8w3HiDiYd2fFnb8S7Wk0U4wVeqdk\njpHzzTdDAgMBAAECggEAC3QykGeP3d2OdBuT2m4/XThtIqQLbCcQDiicTAViRYDh\nxKJOyunvGoE849f1rSvrAA1yu34WWid2BXMNbI0uyLM1XidMlqL7Vl/pyDSdg2uJ\nNYoJjyIoC+to1i1h+HLToJN3H8fjMQ/L0bJDM/o83d/nhvNHq2Jc9JrlZmXmVwTe\nck/ypPjp7A192bdY9StDk2PITNYqoVhwEzYCPvD77EJ1vMja97Ue/r8qD8I0cG7W\nXLCtmvOd0/dQ9oLEvtMviBofuWX7tZpZe4/u7BhgSF4yDVoaYBp9N6yobAlE2l8O\nTHgLcimGWOIkPn1jU8q5Ah5YvRHYhLdbnFhdMAngoQKBgQDyvNtofsfecjneW+0w\nuJe7TA1i9//MdSgih/A/D9JSlLuoFU92J/+2+YaQBfYSQqR8TZ1+VbuTZDKvHmyl\nSgnoI8Vgi1td4jf4paVyZ0pRifDDsCAT8UWl5r3Ehy1oZq/+OwEQwXckSRb46gly\niu8l/Mwb1rnMjHcVtS60m2NtMQKBgQDl2KCnUP/KZRHLdeNUVV1UEhHV9eudaiEW\nyyADM+7AmvQ/QhpV+gNrXASPpVEB61zRpzdMnT5BTqmevDsCwYgUvuTPwZpejMqk\nO+l9zAblNbCceE2qjifTgl+QEAjKcILOb8enpR2a+fV8+jGrT+K9S2UMM4OUlUlp\nBs6rGLY+swKBgQCQjJyP/qehNR525wE5eUOKGsECBbNDmyTaY19S/mX+HWoerwoR\nz8H8wV07mQEvYJY5G7NFD2LTY+C23gRO7ec2YU7hrjsrjlJMdMAwf4gHRICm19RS\na+RQ5jZtuR32ROhbGeIJi1watJfEhQI5PrkpQwB9N4KPZ7pmp+13Se2MkQKBgEDE\n/uCnbq12NcGEAv+s3pPmU6hbmH3PfmuR6f99Dvavs8xvsEQyI+yJDa/9AgrsbEeY\nO3kXhoeYxyu4F1j7eIGAGbKB+CJUwnXtfCq65+aHbrFpJVm+nXJ49rz+B7wkYHgT\n/8s6OFGHxqnlR0HjTR3StTLvAVFJkFpMVMjaOeEJAoGBAKzimoMD5/ioGu8UVsjE\nw8iyOYC/OvCD1utz3ctZb+z6o6mWUWemZP17NpkJuVdmPbpnoGyXdrvEsxzH/j5B\nTiMMWpvyp/mpx8GoKFPsEc4SAM4uAJP3SCr8Wnf6MjraRMrhHroPJTdxprw8rYMt\nLj51JFmHGU+O+qRmxyuscSIz\n-----END PRIVATE KEY-----\n",
+  "client_email": "batiklens-cloudrun-sa@euphoric-hull-424602-s8.iam.gserviceaccount.com",
+  "client_id": "113077033377846467781",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/batiklens-cloudrun-sa%40euphoric-hull-424602-s8.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
