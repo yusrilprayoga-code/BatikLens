@@ -20,7 +20,6 @@ json
 }
 * Protected: Tidak
 
-
 ## Login ("/login")
 * Method: POST
 Description: Endpoint untuk login pengguna. Mengharuskan pengguna mengirimkan email dan password dalam format JSON. Jika berhasil, akan mengembalikan token JWT yang harus disimpan di frontend untuk akses rute yang dilindungi.
@@ -32,6 +31,10 @@ json
   "password": "password123"
 }
 * Protected: Tidak
+
+## Get User by ID ("/user/{id}")
+* Method: GET
+* Description Endpoint untuk mendapatkan user berdasarkan id nya
 
 ## Protected ("/protected")
 * Method: GET
