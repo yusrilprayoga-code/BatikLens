@@ -40,6 +40,10 @@ Headers:
 * Authorization: Bearer <JWT_TOKEN>
 * Protected: Ya
 
+## Prediction ("/predict)
+* Method: POST
+* Description: Endpoint digunakan untuk memprediksi Motif Batik
+
 ## Logout ("/logout")
 
 * Path: /logout
