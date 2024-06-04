@@ -20,7 +20,6 @@ json
 }
 * Protected: Tidak
 
-
 ## Login ("/login")
 * Method: POST
 Description: Endpoint untuk login pengguna. Mengharuskan pengguna mengirimkan email dan password dalam format JSON. Jika berhasil, akan mengembalikan token JWT yang harus disimpan di frontend untuk akses rute yang dilindungi.
@@ -33,12 +32,20 @@ json
 }
 * Protected: Tidak
 
+## Get User by ID ("/user/{id}")
+* Method: GET
+* Description Endpoint untuk mendapatkan user berdasarkan id nya
+
 ## Protected ("/protected")
 * Method: GET
 * Description: Endpoint yang dilindungi yang hanya bisa diakses oleh pengguna yang telah diautentikasi. Mengembalikan pesan sukses dan informasi pengguna yang terotentikasi.
 Headers:
 * Authorization: Bearer <JWT_TOKEN>
 * Protected: Ya
+
+## Prediction ("/predict)
+* Method: POST
+* Description: Endpoint digunakan untuk memprediksi Motif Batik
 
 ## Logout ("/logout")
 
