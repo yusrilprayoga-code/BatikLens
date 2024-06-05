@@ -11,17 +11,21 @@ const getHistoriesHandler = async (request, h) => {
         return {
           id: doc.id,
           history: {
-            result: data.result,
-            createdAt: data.createdAt,
+            Name: data.Name,
+            originName: data.originName,
+            filosofi: data.filosofi,
+            shortInsight: data.shortInsight,
+            manufacturingMethod: data.manufacturingMethod,
             suggestion: data.suggestion,
-            id: data.id 
+            confidenceScore: data.confidenceScore,
+            createdAt: data.createdAt
           }
         };
       });
   
       const response = h.response({
         status: 'success',
-        data: histories 
+        data: histories
       });
       response.code(200);
       return response;
