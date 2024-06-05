@@ -2,6 +2,8 @@
 
 # For testing api : https://batiklens-ctthvh4ssa-et.a.run.app
 
+# For Development Api: https://batiklens-svnfyuekra-et.a.run.app
+
 ## Home ("/")
 * Method: GET
 * Description: Halaman utama dari aplikasi. Ini bisa digunakan untuk menampilkan informasi umum atau halaman landing.
