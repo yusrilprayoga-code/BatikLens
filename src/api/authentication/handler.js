@@ -75,7 +75,6 @@ const loginHandler = async (request, h) => {
   const token = jwt.sign(
     { user: { id: user.id, email: user.email } },
     process.env.JWT_SECRET,
-    { expiresIn: "1h" }
   );
 
   return h.response({
@@ -83,11 +82,11 @@ const loginHandler = async (request, h) => {
     message: "Login successful",
     user: {
       email,
-      expiresIn: "1h",
+      expiresIn: "Until Logout",
       token,
     },
   }).state("token", token, {
-    ttl: 30 * 60 * 1000,
+    ttl: null,
     isSecure: process.env.NODE_ENV === "production",
     isHttpOnly: true,
     encoding: "none",
