@@ -8,6 +8,18 @@ const db = new Firestore();
 const registerHandler = async (request, h) => {
   const { email, password, confirmPassword } = request.payload;
 
+  const allowedFields = ["email", "password", "confirmPassword"];
+  const payloadFields = Object.keys(request.payload);
+
+  for (const field of payloadFields) {
+    if (!allowedFields.includes(field)) {
+      return h.response({
+        status: "fail",
+        message: `Field ${field} is not allowed`,
+      }).code(400);
+    }
+  }
+
   const schema = Joi.object({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
@@ -17,10 +29,14 @@ const registerHandler = async (request, h) => {
   const { error } = schema.validate({ email, password, confirmPassword });
 
   if (error) {
-    return h.response({
-      status: "fail",
-      message: error.details[0].message,
-    }).code(400);
+    const errorMessage = error.details[0].message;
+
+    if (errorMessage.includes('"confirmPassword" must be [ref:password]')) {
+      return h.response({
+        status: "fail",
+        message: "Password and Confirm Password do not match",
+      }).code(400);
+    }
   }
 
   const userSnapshot = await db.collection("users").where("email", "==", email).get();
