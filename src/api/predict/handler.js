@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { Storage } = require('@google-cloud/storage');
 const storeData = require('../../services/storeData');
 const predictClassification = require('../../services/inferenceService');
 
@@ -11,15 +12,30 @@ async function postPredictHandler(request, h) {
         const id = crypto.randomUUID();
         const createdAt = new Date().toISOString();
 
+        const storage = new Storage();
+        const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
+        const file = bucket.file(`images/${id}.png`);
+
+        const stream = file.createWriteStream({
+            metadata: {
+                contentType: ['image/png', 'image/jpeg']
+            }
+        });
+
+        stream.end(image);
+
+        const imageUrl = `https://storage.googleapis.com/${bucket.name}/${file.name}`;
+
         const data = {
             id,
-            Name: label,
+            name: label,
             originName: origin,
-            filosofi: filosofi,
-            shortInsight: shortInsight,
-            manufacturingMethod: manufacturingMethod,
+            filosofi,
+            shortInsight,
+            manufacturingMethod,
             suggestion,
             confidenceScore,
+            imageUrl,
             createdAt
         };
 
@@ -34,6 +50,7 @@ async function postPredictHandler(request, h) {
         return response;
 
     } catch (error) {
+        console.error('Prediction error:', error);
         const response = h.response({
             status: 'fail',
             message: `Terjadi kesalahan dalam melakukan prediksi`
