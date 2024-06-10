@@ -4,9 +4,10 @@ const InputError = require('../exceptions/InputError');
 async function predictClassification(model, image) {
     try {
         let tensor = tf.node.decodeJpeg(image);
-        tensor = tf.image.resizeBilinear(tensor, [256, 256]);
+        tensor = tf.image.resizeBilinear(tensor, [224, 224]);
         tensor = tensor.expandDims(0); 
         tensor = tensor.toFloat().div(tf.scalar(255.0));
+        
 
         const prediction = model.predict(tensor);
         const score = await prediction.data();
