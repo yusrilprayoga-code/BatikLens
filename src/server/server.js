@@ -50,7 +50,7 @@ require("dotenv").config();
     if (response.isBoom && response.output.statusCode === 413) {
       const newResponse = h.response({
         status: "fail",
-        message: "Payload content length greater than maximum allowed: 1000000",
+        message: "Payload content length greater than maximum allowed: 10000000",
       });
       newResponse.code(413);
       return newResponse;
