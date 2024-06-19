@@ -47,13 +47,30 @@ require("dotenv").config();
       return newResponse;
     }
 
-    if (response.isBoom && response.output.statusCode === 413) {
-      const newResponse = h.response({
+    if (response.isBoom) {
+      const statusCode = response.output.statusCode;
+      const message = response.message;
+
+      if (statusCode === 401) {
+        return h.response({
+          status: "fail",
+          error: "Unauthorized",
+          message: message,
+          user: request.auth.credentials ? request.auth.credentials.user : null,
+        }).code(401);
+      }
+
+      if (statusCode === 413) {
+        return h.response({
+          status: "fail",
+          message: "Payload content length greater than maximum allowed: 10000000",
+        }).code(413);
+      }
+
+      return h.response({
         status: "fail",
-        message: "Payload content length greater than maximum allowed: 10000000",
-      });
-      newResponse.code(413);
-      return newResponse;
+        message: message,
+      }).code(statusCode);
     }
 
     return h.continue;
