@@ -1,3 +1,5 @@
 /node_modules
 package-lock.json
 euphoric-hull-424602-s8-12020301e3cb.json
+.env
+.env.development
